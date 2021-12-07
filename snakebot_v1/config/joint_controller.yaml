@@ -1,0 +1,63 @@
+snakebot_v1:
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 20
+
+    joint_1_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_one_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_2_position_controller:
+        type: effort_controllers/JointPositionController
+        joint:  rod_two_joint  
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_3_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_three_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 50, d: 100.0}
+
+    joint_4_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_four_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_5_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_five_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_6_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_six_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_7_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_seven_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+    joint_8_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_eight_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+
+    joint_9_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_nine_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+    joint_10_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: rod_ten_joint
+        # pid: {p: 4000.0, i: 50, d: 100.0}
+        pid: {p: 400.0, i: 30.0, d: 40.0}
+    

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!-- Name your robot here -->
+<robot name ="snakebot_v1" xmlns:xacro="http://wiki.ros.org/xacro">
+
+	<xacro:include filename="$(find snakebot_v1)/urdf/snakearm.urdf"/>
+    <!-- Add your gazebo sensors here -->
+    <xacro:macro name="joint_transmission" params="joint_num">
+        <transmission name="joint_{joint_num}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="rod_${joint_num}_joint">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="motor_${joint_num}">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+    
+    <joint_transmission joint_num="one"/>
+    <joint_transmission joint_num="two"/> 
+    <joint_transmission joint_num="three"/>
+    <joint_transmission joint_num="four"/>
+    <joint_transmission joint_num="five"/>
+    <joint_transmission joint_num="six"/>
+
+    <gazebo reference="link1">
+        <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="link2">
+        <material>Gazebo/TurquoiseGlowOutline</material>
+    </gazebo>
+    <gazebo reference="link4">
+        <material>Gazebo/TurquoiseGlowOutline</material>
+    </gazebo>
+    <gazebo reference="link6">
+        <material>Gazebo/TurquoiseGlowOutline</material>
+    </gazebo>
+    <gazebo reference="headlink">
+        <material>Gazebo/TurquoiseGlowOutline</material>
+    </gazebo>  
+    <gazebo reference="link3">
+        <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="link5">
+        <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="base_link">
+        <material>Gazebo/TurquoiseGlowOutline</material>
+    </gazebo>  
+
+    <!--  Gazebo plugin for control here is already added for you -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/snakebot_v1</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <legacyModeNS>true</legacyModeNS> 
+        </plugin>
+
+        <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+            <alwaysOn>true</alwaysOn>
+            <bodyName>base_link</bodyName>
+            <topicName>imu</topicName>
+            <serviceName>imu_service</serviceName>
+            <gaussianNoise>0.0</gaussianNoise>
+            <updateRate>20.0</updateRate>
+        </plugin>
+    </gazebo>
+
+</robot>	
+
+

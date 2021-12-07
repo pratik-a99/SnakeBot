@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="snakebot_v1">
+
+  <material name="Blue">
+    <color rgba="0.2 0.1 0.8 1.0"/>
+  </material>
+  <material name="Green">
+    <color rgba="0.22 0.32 0.14 1.0"/>
+  </material>
+  <!-- define base link and join it to dummy_link -->
+  <!-- attach the base_link to dummy_link -->
+  <link name="dummy_link">
+  </link>
+  <joint
+    name="dummy_joint"
+    type="fixed">
+    <parent
+      link="dummy_link"/>
+    <child
+      link="base_link"/>
+  </joint> 
+
+  <link name="base_link">
+    <visual>
+      <origin
+        xyz="0. 0. 0."
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Blue"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0."
+        rpy="1.57079632679 0 1.57079632679"/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+    ixx="0.1" ixy="0.0" ixz="0.0"
+    iyy="0.1" iyz="0.0"
+    izz="0.05"/>
+    </inertial>
+  </link>
+<!-- define base link and join it to world -->
+  <joint name="rod_one_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0."
+      rpy="0. 0. -1.57079632679"
+    />
+    <parent link="base_link"/>
+    <child link="link2"/>
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0."
+        rpy="1.57079632679 0 0."/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+      </inertial>
+  </link>
+
+  <joint name="rod_two_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. 1.57079632679"
+    />
+    <parent link="link2"/>
+    <child link="link3"/>
+    
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0."
+        rpy="1.57079632679 0 1.57079632679"/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+  <joint name="rod_three_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. -1.57079632679"
+    />
+    <parent link="link3"/>
+    <child link="link4"/>
+    
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0."
+        rpy="1.57079632679 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+  <joint name="rod_four_joint" type="revolute">
+    <origin xyz="0. 0. 0.072"
+      rpy="0. 0. 1.57079632679"
+    />
+    <parent link="link4"/>
+    <child link="link5"/>
+    
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link5">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 1.57079632679"/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+  <joint name="rod_five_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. -1.57079632679"
+    />
+    <parent link="link5"/>
+    <child link="link6"/>
+    
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link6">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+<!--  -->
+  <joint name="rod_six_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. 1.57079632679"
+    />
+    <parent link="link6"/>
+    <child link="link7"/>
+    
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+    
+  </joint>
+
+  <link name="link7">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+<!--  -->
+  <joint name="rod_seven_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. -1.57079632679"
+    />
+    <parent link="link7"/>
+    <child link="link8"/>
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+  </joint>
+
+  <link name="link8">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+<!--  -->
+  <joint name="rod_eight_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. 1.57079632679"
+    />
+    <parent link="link8"/>
+    <child link="link9"/>
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+  </joint>
+
+  <link name="link9">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 1.57079632679"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+  <!--  -->
+  <joint name="rod_nine_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. -1.57079632679"
+    />
+    <parent link="link9"/>
+    <child link="link10"/>
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+  </joint>
+
+  <link name="link10">
+    <visual>
+      <origin
+        xyz="0. 0. 0.072"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0. 0. 0.0"
+        rpy="1.57079632679 0 0."
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/bridge.stl" scale="0.0013 0.0013 0.0013"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+<!--  -->
+
+  <joint name="rod_ten_joint" type="revolute">
+    <origin
+      xyz="0. 0. 0.072"
+      rpy="0. 0. 1.57079632679"
+    />
+    <parent link="link10"/>
+    <child link="headlink"/>
+    <limit effort="1000" lower="-3.14" upper="3.14" velocity="0.3"/>
+  </joint>
+
+  <link name="headlink">
+    <visual>
+      <origin
+        xyz="0.00 -0.009 0.01"
+        rpy="0 0 0"
+      />
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/head.stl" scale="0.008 0.012 0.008"/>
+      </geometry>
+      <material name="Green"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.00 -0.009 0.01"
+        rpy="0 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://snakebot_v1/meshes/head.stl" scale="0.008 0.012 0.008"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia
+      ixx="0.1" ixy="0.0" ixz="0.0"
+      iyy="0.1" iyz="0.0"
+      izz="0.05"/>
+    </inertial>
+  </link>
+
+</robot>

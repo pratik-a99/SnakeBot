@@ -1,0 +1,42 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+    <!-- <arg name="world_name" value="$(find snakebot_v1)/worlds/farm.world"/> -->
+    </include>
+    
+    <param name= "robot_description" command="$(find xacro)/xacro --inorder $(find snakebot_v1)/urdf/snakearm.xacro "/>
+    <!-- <param name="robot_description" textfile="$(find snakebot_v1)/urdf/snakearm.urdf" />       -->
+    <rosparam file="$(find snakebot_v1)/config/arm_controller.yaml" command="load"/>
+
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model snakebot_v1" output="screen"/>
+
+    <!-- Controller spawner: Starts all the defined controllers with their configs. 
+         Just add your controller names defined in your config file into the args tag below   -->
+    <node name="controller_spwaner" pkg="controller_manager" type="spawner" respawn="false"
+    	output="screen" ns="/snakebot_v1" args="joint_state_controller  
+                                            joint_1_position_controller
+                                            joint_2_position_controller
+                                            joint_3_position_controller
+                                            joint_4_position_controller
+                                            joint_5_position_controller
+                                            joint_6_position_controller"/>
+
+    
+    
+    <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0.1 0 0 0 base_link base_footprint 40" />
+    
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />    
+    
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find snakebot_v1)/urdf/snakebot_v1.rviz" /> -->
+
+    <!-- <node name="rqt_publisher" pkg="rqt_publisher" type="rqt_publisher" /> -->
+
+</launch>
+
+
+
+
+
+
