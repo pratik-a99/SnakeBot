@@ -4,7 +4,9 @@ This repo contains a ROS package of our snake robot, a final project submission 
 
 
 
-
+## Old CAD model:
 ![## Old CAD model:](./addons/oldcad.png)
 
+
+## New CAD model:
 ![## New CAD model:](./addons/newcad.png)
